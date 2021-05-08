@@ -17,7 +17,8 @@ namespace Cine.Models
        
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer(@"Server=DESKTOP-OUG6EEB\SQLEXPRESS;Database=CineDB;Trusted_Connection=True;");
+            optionsBuilder.UseSqlServer(@"Server=DESKTOP-B5M6JGG\SQLEXPRESS;Database=CineDB;Trusted_Connection=True;");
         }
     }
 }
+// String de conexión a la DB de Juampi:DESKTOP-OUG6EEB\SQLEXPRESS
