@@ -1,0 +1,57 @@
+﻿@model Ticket
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Details</title>
+</head>
+<body>
+
+<div>
+    <h4>Ticket</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.nroTicket)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.nroTicket)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.numero)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.numero)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.cantEntradas)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.cantEntradas)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.precioEntrada)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.precioEntrada)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.esTarjeta)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.esTarjeta)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.ticketID">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>
+</body>
+</html>

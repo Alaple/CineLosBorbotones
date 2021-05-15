@@ -1,0 +1,64 @@
+﻿@model Ticket
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Create</title>
+</head>
+<body>
+
+<h4>Ticket</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="nroTicket" class="control-label"></label>
+                <input asp-for="nroTicket" class="form-control" />
+                <span asp-validation-for="nroTicket" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="numero" class="control-label"></label>
+                <input asp-for="numero" class="form-control" />
+                <span asp-validation-for="numero" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="cantEntradas" class="control-label"></label>
+                <input asp-for="cantEntradas" class="form-control" />
+                <span asp-validation-for="cantEntradas" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="precioEntrada" class="control-label"></label>
+                <input asp-for="precioEntrada" class="form-control" />
+                <span asp-validation-for="precioEntrada" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <div class="checkbox">
+                    <label>
+                        <input asp-for="esTarjeta" /> @Html.DisplayNameFor(model => model.esTarjeta)
+                    </label>
+                </div>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-default" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
+</body>
+</html>

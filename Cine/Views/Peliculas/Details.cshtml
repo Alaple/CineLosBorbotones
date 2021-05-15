@@ -1,0 +1,63 @@
+﻿@model Pelicula
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Details</title>
+</head>
+<body>
+
+<div>
+    <h4>Pelicula</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.nombre)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.nombre)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.descripcion)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.descripcion)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.trailer)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.trailer)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.imagen)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.imagen)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.genero)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.genero)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.duracionS)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.duracionS)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.peliculaID">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>
+</body>
+</html>
