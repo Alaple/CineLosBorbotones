@@ -8,7 +8,7 @@ namespace Cine.Models
     public class Cine
     {
         public int cineID { get; set; }
-        public String nombre { get; private set; }
+        public String nombre { get; set; }
 
         public List<Usuario> usuarios { get; private set; }
         public List<Ticket> tickets { get; private set; }

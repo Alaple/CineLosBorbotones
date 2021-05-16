@@ -8,15 +8,15 @@ namespace Cine.Models
     public class Usuario
     {
         public int usuarioID { get; set; }
-        public String mail { get; private set; }
-        public String clave { get; private set; }
-        public Boolean esAdmin { get; private set; }
-        public String nombre { get; private set; }
-        public String apellido { get; private set; }
-        public String dni { get; private set; }
-        public String direccion { get; private set; }
-        public String telefono { get; private set; }
-        public List<Ticket> tickets { get; private set; }
+        public String mail { get;  set; }
+        public String clave { get;  set; }
+        public Boolean esAdmin { get;  set; }
+        public String nombre { get;  set; }
+        public String apellido { get;  set; }
+        public String dni { get;  set; }
+        public String direccion { get;  set; }
+        public String telefono { get;  set; }
+        public List<Ticket> tickets { get;  set; }
 
         public void getHistorial()
         {

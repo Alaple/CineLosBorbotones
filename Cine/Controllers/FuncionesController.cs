@@ -9,22 +9,22 @@ using Cine.Models;
 
 namespace Cine.Controllers
 {
-    public class FuncionsController : Controller
+    public class FuncionesController : Controller
     {
         private readonly CineContext _context;
 
-        public FuncionsController(CineContext context)
+        public FuncionesController(CineContext context)
         {
             _context = context;
         }
 
-        // GET: Funcions
+        // GET: Funciones
         public async Task<IActionResult> Index()
         {
             return View(await _context.Funciones.ToListAsync());
         }
 
-        // GET: Funcions/Details/5
+        // GET: Funciones/Details/5
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -42,13 +42,13 @@ namespace Cine.Controllers
             return View(funcion);
         }
 
-        // GET: Funcions/Create
+        // GET: Funciones/Create
         public IActionResult Create()
         {
             return View();
         }
 
-        // POST: Funcions/Create
+        // POST: Funciones/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
@@ -64,7 +64,7 @@ namespace Cine.Controllers
             return View(funcion);
         }
 
-        // GET: Funcions/Edit/5
+        // GET: Funciones/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -80,7 +80,7 @@ namespace Cine.Controllers
             return View(funcion);
         }
 
-        // POST: Funcions/Edit/5
+        // POST: Funciones/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
@@ -115,7 +115,7 @@ namespace Cine.Controllers
             return View(funcion);
         }
 
-        // GET: Funcions/Delete/5
+        // GET: Funciones/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -133,7 +133,7 @@ namespace Cine.Controllers
             return View(funcion);
         }
 
-        // POST: Funcions/Delete/5
+        // POST: Funciones/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
