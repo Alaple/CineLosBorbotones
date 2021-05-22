@@ -24,7 +24,7 @@ namespace Cine.Models
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer(@"Server=DESKTOP-OUG6EEB\SQLEXPRESS;Database=CineDB;Trusted_Connection=True;");
+            optionsBuilder.UseSqlServer(@"Server=LUCAS-PC\SQLEXPRESS;Database=CineDB;Trusted_Connection=True;");
         }
     }
 }

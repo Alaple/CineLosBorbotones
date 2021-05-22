@@ -11,13 +11,13 @@ namespace Cine.Models
     {
         public int funcionID { get; set; }
 
-        public String dia { get; private set; }
+        public String dia { get; set; }
 
-        public String hora { get; private set; }
+        public String hora { get; set; }
 
-        public int cantButacasLibres { get; private set; }
+        public int cantButacasLibres { get; set; }
 
-        public Pelicula pelicula { get; private set; }
+        public Pelicula pelicula { get; set; }
 
         public void agregarPelicula()
         {

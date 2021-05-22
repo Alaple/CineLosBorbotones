@@ -9,13 +9,13 @@ namespace Cine.Models
     {
         public int ticketID { get; set; }
 
-        public int nroTicket { get; private set; }
+        public int nroTicket { get; set; }
 
-        public int numero { get; private set; }
-        public int cantEntradas { get; private set; }
-        public double precioEntrada { get; private set; }
+        public int numero { get; set; }
+        public int cantEntradas { get; set; }
+        public double precioEntrada { get; set; }
 
-        public Boolean esTarjeta { get; private set; }
+        public Boolean esTarjeta { get; set; }
 
         public double calcularValorEntrada(int cantEntradas, double precioEntrada)
         {

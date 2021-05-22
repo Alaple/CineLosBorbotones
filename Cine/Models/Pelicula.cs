@@ -9,19 +9,19 @@ namespace Cine.Models
     {
         public int peliculaID { get; set; }
 
-        public String nombre { get; private set; }
+        public String nombre { get; set; }
 
-        public String descripcion { get; private set; }
+        public String descripcion { get; set; }
 
-        public String trailer { get; private set; }
+        public String trailer { get; set; }
 
-        public String imagen { get; private set; }
+        public String imagen { get; set; }
 
-        public String genero { get; private set; }
+        public String genero { get; set; }
 
-        public int duracionS{ get; private set; }
+        public int duracionS{ get; set; }
 
-        public List<Funcion> funciones { get; private set; }
+        public List<Funcion> funciones { get; set; }
 
         public String obtenerDuracionTotal()
         {

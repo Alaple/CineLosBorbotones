@@ -9,11 +9,11 @@ namespace Cine.Models
     {
         public int salaID { get; set; }
 
-        public int numero { get; private set; }
+        public int numero { get; set; }
 
         public const int CAPACIDAD_SALA = 0;
 
-        public List<Funcion> funciones { get; private set; }
+        public List<Funcion> funciones { get; set; }
 
         public void agregarFuncion()
         {
