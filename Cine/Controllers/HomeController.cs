@@ -36,6 +36,26 @@ namespace Cine.Controllers
             return View();
         }
 
+        public IActionResult MiPerfil()
+        {
+            ViewData["Message"] = "Your contact page.";
+
+            return View();
+        }
+
+        public IActionResult AgregarPelicula()
+        {
+            ViewData["Message"] = "Your contact page.";
+
+            return View();
+        }
+
+        public IActionResult ModificarPelicula()
+        {
+            ViewData["Message"] = "Your contact page.";
+
+            return View();
+        }
         public IActionResult Privacy()
         {
             return View();

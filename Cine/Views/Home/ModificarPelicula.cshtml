@@ -1,0 +1,67 @@
+﻿@{
+    ViewData["Title"] = "Mi Perfil";
+}
+
+<style>
+
+    #izquierda {
+        text-align: left
+    }
+    #derecha {
+        text-align: right;
+    }
+   
+</style>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+</head>
+<body>
+    <h2>Modificar Pelicula</h2>
+    <form>
+        <div id="izquierda">
+            <br><label for="minombre">NOMBRE </label>
+            <input type="text" name="minombre" id="minombre" placeholder="Mi Nombre">
+            <br><label for="migeneto">GENERO </label>
+            <select>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+            </select>
+            <br><label for="miimagen">IMAGEN </label>
+            <input type="text" name="miimage" id="miimagen" placeholder="Imagen">
+            <br><label for="mivideo">Video </label>
+            <input type="text" name="mivideo" id="mivideo" placeholder="Video">
+
+        </div>
+
+        <div id="derecha">
+            <br><label for="midescripcion">DESCRIPCION </label>
+            <input type="text" name="midescripcion" id="midescripcion" placeholder="Descripcion">
+            <br><label for="misala">SALA </label>
+            <select>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+            </select>
+            <br><label for="midia">DIA </label>
+            <select>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+            </select>
+            <br><label for="mihorario">HORARIO </label>
+            <select>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+            </select>
+            <br><button type="submit">Guardar</button>
+
+        </div>
+    </form>
+</body>
+</html>
