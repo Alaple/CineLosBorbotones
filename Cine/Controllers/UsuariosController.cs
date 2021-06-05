@@ -189,5 +189,41 @@ namespace Cine.Controllers
         {
             return _context.Usuarios.Any(e => e.usuarioID == id);
         }
+
+        [HttpPost]
+        public async Task<IActionResult> Validar(Usuario usuario)
+        {
+            Console.WriteLine("ASDASDA");
+            //Asgino los valores del Usuario para hacer una consulta en la base de datos
+            string login = usuario.mail;
+            string pass = usuario.clave;
+            var user = (from u in _context.Usuarios
+                        where u.mail == login && u.clave == pass
+                        select u).FirstOrDefault<Usuario>();
+
+            //Valido que no exista el usuario, y en caso de existir, valido el tipo de usuario
+            if (user != null)
+            {
+                if (user.esAdmin == true) //ADMIN
+                {
+                    return View();
+                }
+                else if (user.esAdmin == false)
+                {
+                    return RedirectToAction("Index", "About");
+                }
+                else 
+                {
+                    return RedirectToAction("Index", "Contact");
+                }
+
+            }
+            else //Vuelve a la view Index = Pantalla de Login
+            {
+                return RedirectToAction("Index", "Home", new { invalid = true });
+            }
+
+
+        }
     }
 }

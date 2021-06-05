@@ -3,14 +3,68 @@
 }
 
 <style>
+    .grid-container {
+        display: grid;
+        grid-template-columns: 0.2fr 0.9fr 0.4fr 3fr 0.5fr;
+        grid-template-rows: 0.6fr 0.3fr 0.6fr 0.4fr 0.7fr 0.3fr 0.8fr 1.1fr 3.8fr 1.7fr 1fr;
+        gap: 0px 0px;
+        grid-template-areas:
+            ". Nombre . AddName ."
+            ". . . . ."
+            ". APELLIDO . AddApellido ."
+            ". . . . ."
+            ". MAIL . AddMail ."
+            ". . . . ."
+            ". DNI . AddDNI ."
+            ". . . . ."
+            ". IMAGEN IMAGEN IMAGEN ."
+            ". . . . ."
+            ". . . . .";
+    }
 
-    #izquierda {
+    .Nombre {
+        grid-area: Nombre;
+    }
+
+    .APELLIDO {
+        grid-area: APELLIDO;
+    }
+
+    .MAIL {
+        grid-area: MAIL;
+    }
+
+    .DNI {
+        grid-area: DNI;
+    }
+
+    .AddName {
+        grid-area: AddName;
+    }
+
+    .AddApellido {
+        grid-area: AddApellido;
+    }
+
+    .AddMail {
+        grid-area: AddMail;
+    }
+
+    .AddDNI {
+        grid-area: AddDNI;
+    }
+
+    .IMAGEN {
+        grid-area: IMAGEN;
+    }
+
+/*    #izquierda {
         text-align: left
     }
     #derecha {
         text-align: right;
     }
-   
+   */
 </style>
 <html lang="en">
 <head>

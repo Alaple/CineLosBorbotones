@@ -1,6 +1,6 @@
 ﻿@model Usuario;
-@{
-    ViewData["Title"] = "Home Page";
+
+@{  ViewData["Title"] = "Home Page";
 }
 <style>
     body {
@@ -92,19 +92,8 @@
         </div>
     </div>
 </div>
-<!--
- <form>
-    <div class="container">
-        <label for="uname"><b>Username</b></label>
-        <input type="text" placeholder="Enter Username" name="uname" required>
 
-        <label for="psw"><b>Password</b></label>
-        <input type="password" placeholder="Enter Password" name="psw" required>
 
-        <button type="submit">Login</button>
-    </div>
-</form>
--->
 <div class="ingreso">
     @* 2 - FORMULARIO DE LOGIN: Manda el valor de los inputs por parametro al UsuarioController *@
     @using (Html.BeginForm("Validar", "Usuarios", FormMethod.Post))
@@ -118,3 +107,4 @@
         <label style="@ViewBag.Erro">Usuario y/o contraseña invalido(s)!</label>
     }
 </div>
+
