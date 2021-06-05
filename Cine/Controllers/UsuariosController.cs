@@ -24,6 +24,47 @@ namespace Cine.Controllers
             return View(await _context.Usuarios.ToListAsync());
         }
 
+
+
+        [HttpPost]
+        public async Task<IActionResult> Validar(Usuario usuario) //Recibe un Usuario por el metodo POST
+        {
+
+
+            //Asgino los valores del Usuario para hacer una consulta en la base de datos
+            string login = usuario.mail;
+            string pass = usuario.clave;
+            var user = (from u in _context.Usuarios
+                        where u.mail == login && u.clave == pass
+                        select u).FirstOrDefault<Usuario>();
+
+            //Valido que no exista el usuario, y en caso de existir, valido el tipo de usuario
+            if (user != null)
+            {
+                if (user.esAdmin) //ADMIN
+                {
+                    return RedirectToAction("About", "Home");
+                }
+                else if (!user.esAdmin) //ALUMNO
+                {
+                    //Redirecciona al Action Inicio de AlumnoesController
+                    return RedirectToAction("Inicio", "Alumnoes", new { dni = user.mail });
+                }
+                else //PROFESOR
+                {
+                    //Redirecciona al Action Inicio de ProfesorsController
+                    return RedirectToAction("Inicio", "Profesors", new { dni = user.mail });
+                }
+
+            }
+            else //Vuelve a la view Index = Pantalla de Login
+            {
+                return RedirectToAction("Index", "Home", new { invalid = true });
+            }
+
+
+        }
+
         // GET: Usuarios/Details/5
         public async Task<IActionResult> Details(int? id)
         {
