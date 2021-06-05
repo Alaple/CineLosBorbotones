@@ -1,57 +1,63 @@
-﻿@{
+﻿@model Usuario
+@{ 
     ViewData["Title"] = "Home Page";
 }
 <style>
-body {font-family: Arial, Helvetica, sans-serif;}
-form {border: 3px solid #f1f1f1;}
+    body {
+        font-family: Arial, Helvetica, sans-serif;
+    }
 
-input[type=text], input[type=password] {
-  width: 95%;
-  padding: 12px 20px;
-  margin: 8px 0;
-  display: inline-block;
-  border: 1px solid #ccc;
-  box-sizing: border-box;
-}
+    form {
+        border: 3px solid #f1f1f1;
+    }
 
-button {
-  background-color: #04AA6D;
-  color: white;
-  padding: 14px 20px;
-  margin: 8px 0;
-  border: none;
-  cursor: pointer;
-  width: 95%;
-}
+    input[type=text], input[type=password] {
+        width: 95%;
+        padding: 12px 20px;
+        margin: 8px 0;
+        display: inline-block;
+        border: 1px solid #ccc;
+        box-sizing: border-box;
+    }
 
-button:hover {
-  opacity: 0.8;
-}
+    button {
+        background-color: #04AA6D;
+        color: white;
+        padding: 14px 20px;
+        margin: 8px 0;
+        border: none;
+        cursor: pointer;
+        width: 95%;
+    }
 
-.cancelbtn {
-  width: auto;
-  padding: 10px 18px;
-  background-color: #f44336;
-}
+        button:hover {
+            opacity: 0.8;
+        }
 
-.imgcontainer {
-  text-align: center;
-  margin: 24px 0 12px 0;
-}
+    .cancelbtn {
+        width: auto;
+        padding: 10px 18px;
+        background-color: #f44336;
+    }
 
-img.avatar {
-  width: 40%;
-  border-radius: 50%;
-}
+    .imgcontainer {
+        text-align: center;
+        margin: 24px 0 12px 0;
+    }
 
-.container {
-  padding: 16px;
-}
+    img.avatar {
+        width: 40%;
+        border-radius: 50%;
+    }
 
-span.psw {
-  float: right;
-  padding-top: 16px;
-}
+    .container {
+        padding: 16px;
+    }
+
+    span.psw {
+        float: right;
+        padding-top: 16px;
+    }
 </style>
 <div id="myCarousel" class="carousel slide" data-ride="carousel" data-interval="6000">
     <ol class="carousel-indicators">
@@ -64,7 +70,7 @@ span.psw {
             <img src="~/images/cine1.jpg" class="img-responsive" />
             <div class="carousel-caption" role="option">
                 <p>
-                   EXPERIMENTA UNA NUEVA FORMA DE VER PELICULAS
+                    EXPERIMENTA UNA NUEVA FORMA DE VER PELICULAS
                 </p>
             </div>
         </div>
@@ -88,12 +94,13 @@ span.psw {
 </div>
 <form>
     <div class="container">
-        <label for="uname"><b>Username</b></label>
-        <input type="text" placeholder="Enter Username" name="uname" required>
-
-        <label for="psw"><b>Password</b></label>
-        <input type="password" placeholder="Enter Password" name="psw" required>
-
-        <button type="submit">Login</button>
+        @using (Html.BeginForm("Validar", "Usuario", FormMethod.Post))
+        {
+            <label for="uname"><b>Direccion de Correo</b></label>
+            @Html.TextBoxFor(u => u.mail, new { @class = "text", type = "text", required = "required" })
+            <label for="psw"><b>Password</b></label>
+            @Html.TextBoxFor(u => u.clave, new { @class = "text", type = "password", required = "required" })
+            <button type="submit">Login</button>
+        }
     </div>
 </form>
