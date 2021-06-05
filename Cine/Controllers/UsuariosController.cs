@@ -190,7 +190,7 @@ namespace Cine.Controllers
             return _context.Usuarios.Any(e => e.usuarioID == id);
         }
 
-        [HttpPost]
+       /* [HttpPost]
         public async Task<IActionResult> Validar(Usuario usuario)
         {
             Console.WriteLine("ASDASDA");
@@ -225,5 +225,6 @@ namespace Cine.Controllers
 
 
         }
+       */
     }
 }
