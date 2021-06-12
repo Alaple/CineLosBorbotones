@@ -45,17 +45,11 @@ namespace Cine.Controllers
                 {
                     return RedirectToAction("About", "Home");
                 }
-                else if (!user.esAdmin) //ALUMNO
+                else 
                 {
                     //Redirecciona al Action Inicio de AlumnoesController
-                    return RedirectToAction("Inicio", "Alumnoes", new { dni = user.mail });
+                    return RedirectToAction("About", "Home");
                 }
-                else //PROFESOR
-                {
-                    //Redirecciona al Action Inicio de ProfesorsController
-                    return RedirectToAction("Inicio", "Profesors", new { dni = user.mail });
-                }
-
             }
             else //Vuelve a la view Index = Pantalla de Login
             {

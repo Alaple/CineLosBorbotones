@@ -10,8 +10,16 @@ namespace Cine.Controllers
 {
     public class HomeController : Controller
     {
-        public IActionResult Index()
+        public IActionResult Index(bool? invalid)
         {
+            if(invalid != null)
+            {
+                ViewBag.Erro = "display: inline; color:red;";
+            }
+            else
+            {
+                ViewBag.Erro = "display: none;";
+            }
             return View();
         }
 
