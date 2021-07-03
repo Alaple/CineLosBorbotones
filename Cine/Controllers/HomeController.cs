@@ -1,5 +1,6 @@
 ﻿using Cine.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -10,9 +11,16 @@ namespace Cine.Controllers
 {
     public class HomeController : Controller
     {
+        private readonly CineContext _context;
+
+        public HomeController(CineContext context)
+        {
+            _context = context;
+        }
+
         public IActionResult Index(bool? invalid)
         {
-            if(invalid != null)
+            if (invalid != null)
             {
                 ViewBag.Erro = "display: inline; color:red;";
             }
@@ -20,6 +28,12 @@ namespace Cine.Controllers
             {
                 ViewBag.Erro = "display: none;";
             }
+            return View();
+        }
+
+        public IActionResult Home()
+        {
+            this.getPeliculas();
             return View();
         }
 
@@ -74,5 +88,15 @@ namespace Cine.Controllers
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
+
+        [HttpGet]
+        public async Task<IActionResult> getPeliculas() //Retorna peliculas
+        {
+            var peliculas = (from u in _context.Peliculas
+                             select u).ToList();
+            ViewBag.Peliculas = peliculas;
+            return View(await _context.Peliculas.ToListAsync());
+        }
     }
 }
+
