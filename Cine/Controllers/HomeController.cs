@@ -1,6 +1,7 @@
 ﻿using Cine.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -55,6 +56,7 @@ namespace Cine.Controllers
         public IActionResult PeliculaSeleccionada()
         {
             ViewData["Message"] = "Your contact page.";
+            ViewBag.PeliculaSelect = JsonConvert.DeserializeObject((string)TempData["PeliculaSelect"]);
             return View();
         }
 
@@ -99,10 +101,10 @@ namespace Cine.Controllers
         }
 
         public async Task<IActionResult> ImageChangePage(int id) {
-            ViewBag.PeliculaSelect = (from u in _context.Peliculas
+            TempData["PeliculaSelect"] = JsonConvert.SerializeObject((from u in _context.Peliculas
                                             where u.peliculaID == id
-                                            select u).FirstOrDefault();
-            
+                                            select u).FirstOrDefault());
+            TempData.Keep();
             return RedirectToAction("PeliculaSeleccionada", "Home");
         }
     }
