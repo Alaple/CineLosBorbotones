@@ -12,6 +12,7 @@ namespace Cine.Controllers
     public class HomeController : Controller
     {
         private readonly CineContext _context;
+        public Pelicula peliSelect;
 
         public HomeController(CineContext context)
         {
@@ -54,7 +55,6 @@ namespace Cine.Controllers
         public IActionResult PeliculaSeleccionada()
         {
             ViewData["Message"] = "Your contact page.";
-
             return View();
         }
 
@@ -96,6 +96,14 @@ namespace Cine.Controllers
                              select u).ToList();
             ViewBag.Peliculas = peliculas;
             return View(await _context.Peliculas.ToListAsync());
+        }
+
+        public async Task<IActionResult> ImageChangePage(int id) {
+            ViewBag.PeliculaSelect = (from u in _context.Peliculas
+                                            where u.peliculaID == id
+                                            select u).FirstOrDefault();
+            
+            return RedirectToAction("PeliculaSeleccionada", "Home");
         }
     }
 }

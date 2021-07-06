@@ -92,9 +92,11 @@
             @{var miLista = ViewBag.Peliculas as IEnumerable<Pelicula>;}
 
             @foreach (var peli in miLista){
-            <img src="@peli.imagen" alt="" value="@peli.peliculaID">
+                <a asp-area="" asp-controller="Home" asp-action="ImageChangePage" asp-route-id="@peli.peliculaID">
+                    <img src="@peli.imagen" alt="" value="@peli.peliculaID">
+                </a> 
             }
-        </div>
+</div>
     </div>
     <div class="container">
         <h2>Proximamente</h2>

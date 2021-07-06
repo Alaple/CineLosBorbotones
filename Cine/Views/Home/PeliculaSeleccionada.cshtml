@@ -158,8 +158,9 @@
     </div>
 </div>
 <div class="grid-container">
+    @{var miLista = ViewBag.Peliculas as IEnumerable<Pelicula>;}
     <div class="Titulo">
-        <h1>A QUIET PLACE 2</h1>
+        <h1>@miLista</h1>
     </div>
     <div class="Poster">
         <div class="Imagen">
