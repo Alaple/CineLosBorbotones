@@ -67,7 +67,7 @@
                                      width="290" />
                                 <div class="mt-3">
                                     <div>
-                                        <h4>{{ usuarios.nombre }} {{ usuarios.apellido }} </h4>
+                                        <h4> NOMBRE Y APELLIDO </h4>
                                     </div>
                                     <p class="text-secondary mb-1">Movie Fan!</p>
                                 </div>
@@ -88,7 +88,7 @@
                                         <h6 class="mb-0">Nombre</h6>
                                     </div>
                                     <div class="col-sm-9 text-secondary">
-                                        {{ usuarios.nombre }}
+                                        NOMBRE USUARIO
                                     </div>
                                 </div>
                                 <hr />
@@ -99,7 +99,7 @@
                                     <h6 class="mb-0">Apellido</h6>
                                 </div>
                                 <div class="col-sm-9 text-secondary">
-                                    {{ usuarios.apellido }}
+                                    APELLDIO USUARIO
                                 </div>
                             </div>
                             <hr />
@@ -109,7 +109,7 @@
                                     <h6 class="mb-0">Email</h6>
                                 </div>
                                 <div class="col-sm-9 text-secondary">
-                                    {{ usuarios.email }}
+                                    EMAIL
                                 </div>
                             </div>
                             <hr />
@@ -120,7 +120,7 @@
                                     <h6 class="mb-0">Fecha de nacimiento</h6>
                                 </div>
                                 <div class="col-sm-9 text-secondary">
-                                    {{ usuarios.fechaNacimiento }}
+                                    FECHA NACIIENTO
                                 </div>
                             </div>
                             <hr />
@@ -151,11 +151,11 @@
                                         <th scope="col">COSTO TOTAL</th>
                                     </tr>
                                     <tr v-for="reserva in reservas" :key="reserva._id">
-                                        <td>{{ reserva.nroReserva }}</td>
-                                        <td>{{ reserva._idFuncion }}</td>
-                                        <td>{{ reserva.cantidadEntradas }}</td>
-                                        <td>{{ reserva.medioPago }}</td>
-                                        <td>{{ agregarSignoPesos(reserva.valorTotal) }}</td>
+                                        <td>N RESERVA</td>
+                                        <td>ID FUNCION</td>
+                                        <td>CANT ENTRADAS</td>
+                                        <td>MEDIO DE PAGO</td>
+                                        <td>TOTAL PAGADO</td>
                                     </tr>
                                 </table>
                             </div>
