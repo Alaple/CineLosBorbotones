@@ -63,7 +63,7 @@ namespace Cine.Controllers
         public IActionResult MiPerfil()
         {
             ViewData["Message"] = "Your contact page.";
-
+            ViewBag.Usuario = JsonConvert.DeserializeObject((string)TempData["Usuario"]);
             return View();
         }
 

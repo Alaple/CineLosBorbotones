@@ -156,9 +156,7 @@
 </style>
 <section class="src-components-reserva">
     <div class="container2">
-        @if (ViewBag.EnableTicket)
-        {
-            <div class="Ticket">
+            <div class="Ticket" style="@ViewBag.EnableTicket">
                 <div class="TICKET">TICKET</div>
                 <div class="Numero">
                     NÚMERO: 
@@ -185,9 +183,8 @@
                     MEDIO DE PAGO: 
                 </div>
             </div>   
-        }
         <div class="Datos">
-            <div class="Nombre"
+            <div class="Nombre">
                  @{var peli = ViewBag.PeliculaSelect;}
                 <h1>@peli.nombre</h1>
             </div>

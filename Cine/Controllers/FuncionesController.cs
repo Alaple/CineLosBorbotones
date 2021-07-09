@@ -31,8 +31,8 @@ namespace Cine.Controllers
         public IActionResult Reserva()
         {
             //ViewBag.PeliculaSelect = _context.Peliculas.
+            ViewBag.EnableTicket = "display: none;";
             ViewBag.PeliculaSelect = JsonConvert.DeserializeObject((string)TempData["PeliculaSelect"]);
-            ViewBag.EnableTicket = buyTicket;
             return View();
         }
 
@@ -165,7 +165,8 @@ namespace Cine.Controllers
         [HttpPost]
         public async Task<IActionResult> GetTicket(int cantEntradas, bool esTarjeta) //Retorna peliculas
         {
-            ViewBag.EnableTicket = true;
+            ViewBag.EnableTicket = "display: inline;";
+
             //Usuario user = (Usuario)JsonConvert.DeserializeObject((string)TempData["Usuario"]);
 
             //Ticket nuevoTicket = new Ticket();
