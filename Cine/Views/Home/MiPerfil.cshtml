@@ -2,105 +2,168 @@
     ViewData["Title"] = "Mi Perfil";
 }
 
-<style>
-    .grid-container {
-        display: grid;
-        grid-template-columns: 0.2fr 0.9fr 0.4fr 3fr 0.5fr;
-        grid-template-rows: 0.6fr 0.3fr 0.6fr 0.4fr 0.7fr 0.3fr 0.8fr 1.1fr 3.8fr 1.7fr 1fr;
-        gap: 0px 0px;
-        grid-template-areas:
-            ". Nombre . AddName ."
-            ". . . . ."
-            ". APELLIDO . AddApellido ."
-            ". . . . ."
-            ". MAIL . AddMail ."
-            ". . . . ."
-            ". DNI . AddDNI ."
-            ". . . . ."
-            ". IMAGEN IMAGEN IMAGEN ."
-            ". . . . ."
-            ". . . . .";
+<style scoped lang="css">
+
+
+    h2 {
+        font: bold 20px/2 Sans-Serif;
+        background-color: #2bc8ac;
+        color: white;
+        display: table;
+        padding: 0 10px;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        font-family: 'Convergence', sans-serif;
     }
 
-    .Nombre {
-        grid-area: Nombre;
+    h1 {
+        margin-top: 1.5%;
+        margin-left: 1.6%;
+        font: bold 20px/2 Sans-Serif;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        font-family: 'Convergence', sans-serif;
     }
 
-    .APELLIDO {
-        grid-area: APELLIDO;
+    th {
+        font-size: 15px;
+        text-align: center;
+        font-family: 'nunito', sans-serif;
     }
 
-    .MAIL {
-        grid-area: MAIL;
+    td {
+        font-size: 12px;
+        text-align: center;
+        font-family: 'nunito', sans-serif;
     }
 
-    .DNI {
-        grid-area: DNI;
+
+    img {
+        margin: 20%;
     }
 
-    .AddName {
-        grid-area: AddName;
+    .boton-editar {
+        font-family: 'Orbitron', sans-serif;
     }
 
-    .AddApellido {
-        grid-area: AddApellido;
+    .card-body h6 {
+        font-family: 'nunito', sans-serif;
+        font-weight: bold;
     }
-
-    .AddMail {
-        grid-area: AddMail;
-    }
-
-    .AddDNI {
-        grid-area: AddDNI;
-    }
-
-    .IMAGEN {
-        grid-area: IMAGEN;
-    }
-
-/*    #izquierda {
-        text-align: left
-    }
-    #derecha {
-        text-align: right;
-    }
-   */
 </style>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<section class="profile">
+    <h1>Mi Perfil</h1>
+    <br />
 
-</head>
-<body>
-    <h2>Mi Perfil</h2>
-    <form>
-        <div id="izquierda">
-            <br><label for="minombre">NOMBRE </label>
-            <input type="text" name="minombre" id="minombre" placeholder="Mi Nombre">
-            <br><label for="miapellido">APELLIDO </label>
-            <input type="text" name="miapellido" id="miapellido" placeholder="Apellido">
-            <br><label for="mimail">MAIL </label>
-            <input type="email" name="mimail" id="mimail" placeholder="Mail">
-            <br><label for="midni">DNI </label>
-            <input type="text" name="midni" id="midni" placeholder="DNI">
+    <div class="container">
+        <div class="main-body">
+            <div class="row gutters-sm">
+                <div class="col-md-4 mb-3">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="d-flex flex-column align-items-center text-center">
+                                <img src="https://securitygladiators.com/wp-content/uploads/2019/11/kids-movies.png"
+                                     alt="User"
+                                     width="290" />
+                                <div class="mt-3">
+                                    <div>
+                                        <h4>{{ usuarios.nombre }} {{ usuarios.apellido }} </h4>
+                                    </div>
+                                    <p class="text-secondary mb-1">Movie Fan!</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
+                <div class="col-md-8">
+                    <div class="card mb-3">
+                        <div class="card-body">
+                            <h2>Mis Datos</h2>
+                            <br />
+
+                            <div>
+                                <div class="row">
+                                    <div class="col-sm-3">
+                                        <h6 class="mb-0">Nombre</h6>
+                                    </div>
+                                    <div class="col-sm-9 text-secondary">
+                                        {{ usuarios.nombre }}
+                                    </div>
+                                </div>
+                                <hr />
+                            </div>
+
+                            <div class="row">
+                                <div class="col-sm-3">
+                                    <h6 class="mb-0">Apellido</h6>
+                                </div>
+                                <div class="col-sm-9 text-secondary">
+                                    {{ usuarios.apellido }}
+                                </div>
+                            </div>
+                            <hr />
+
+                            <div class="row">
+                                <div class="col-sm-3">
+                                    <h6 class="mb-0">Email</h6>
+                                </div>
+                                <div class="col-sm-9 text-secondary">
+                                    {{ usuarios.email }}
+                                </div>
+                            </div>
+                            <hr />
+                            <br />
+
+                            <div class="row">
+                                <div class="col-sm-3">
+                                    <h6 class="mb-0">Fecha de nacimiento</h6>
+                                </div>
+                                <div class="col-sm-9 text-secondary">
+                                    {{ usuarios.fechaNacimiento }}
+                                </div>
+                            </div>
+                            <hr />
+                            <br />
+
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <a class="btn boton-editar btn-dark" target="__blank" href="#">Editar</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row gutters-sm">
+                    <div class="col-sm-12 mb-3">
+                        <div class="card h-100">
+                            <div class="card-body">
+                                <h2>Mis Reservas</h2>
+                                <br />
+
+                                <table class="table">
+                                    <tr>
+                                        <th scope="col">RESERVA NRO</th>
+                                        <th scope="col">FUNCION NRO</th>
+                                        <th scope="col">CANTIDAD DE ENTRADAS</th>
+                                        <th scope="col">MEDIO DE PAGO</th>
+                                        <th scope="col">COSTO TOTAL</th>
+                                    </tr>
+                                    <tr v-for="reserva in reservas" :key="reserva._id">
+                                        <td>{{ reserva.nroReserva }}</td>
+                                        <td>{{ reserva._idFuncion }}</td>
+                                        <td>{{ reserva.cantidadEntradas }}</td>
+                                        <td>{{ reserva.medioPago }}</td>
+                                        <td>{{ agregarSignoPesos(reserva.valorTotal) }}</td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
+    </div>
 
-        <div id="derecha">
-            <br><label for="miclave">CLAVE </label>
-            <input type="password" name="miclave" id="miclave" placeholder="Clave">
-            <br><label for="midireccion">DIRECCION </label>
-            <input type="text" name="midireccion" id="midireccion" placeholder="Direccion">
-            <br><label for="mitelefono">TELEFONO </label>
-            <input type="text" name="mitelefono" id="mitelefono" placeholder="Telefono">
-
-            <br><button type="submit">Guardar</button>
-
-        </div>
-    </form>
-
-
-</body>
-</html>
+</section>

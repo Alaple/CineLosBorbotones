@@ -1,0 +1,254 @@
+﻿@{
+    ViewData["Title"] = "Reserva";
+}
+<style>
+    .src-components-reserva {
+    }
+
+    .container2 {
+        display: grid;
+        grid-template-columns: 0fr 1fr 1fr 1fr 0fr;
+        grid-template-rows: 0fr 1fr 0fr;
+        gap: 30px 30px;
+        grid-auto-flow: row;
+        grid-template-areas:
+            ". . . . ."
+            ". Datos Datos Ticket ."
+            ". . . . .";
+    }
+
+    .Ticket {
+        background-color: white;
+        text-align: left; /* Agregao manual */
+        border: 2px solid black; /* Agregao manual */
+        padding: 5px; /* Agregao manual */
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        grid-template-rows: 0fr 0fr 0fr 0fr 0fr 0fr 0fr 0fr 0fr 0.1fr 0fr;
+        gap: 15px 0px;
+        grid-auto-flow: row;
+        grid-template-areas:
+            "TICKET TICKET TICKET"
+            ". . ."
+            "Numero Numero Numero"
+            "Pelicula Pelicula Pelicula"
+            "Dia Dia Dia"
+            "Hora Hora Hora"
+            "Sala Sala Sala"
+            "CantidadEntradas CantidadEntradas CantidadEntradas"
+            "ValorTotal ValorTotal ValorTotal"
+            "MedioPago MedioPago MedioPago"
+            ". . .";
+        grid-area: Ticket;
+    }
+
+    .TICKET {
+        grid-area: TICKET;
+        font-family: 'Convergence', sans-serif;
+    }
+
+    .Numero {
+        grid-area: Numero;
+        font-family: 'Nunito', sans-serif;
+    }
+
+    .Pelicula {
+        grid-area: Pelicula;
+        font-family: 'Nunito', sans-serif;
+    }
+
+    .Dia {
+        grid-area: Dia;
+        font-family: 'Nunito', sans-serif;
+    }
+
+    .Hora {
+        grid-area: Hora;
+        font-family: 'Nunito', sans-serif;
+    }
+
+    .Sala {
+        grid-area: Sala;
+        font-family: 'Nunito', sans-serif;
+    }
+
+    .CantidadEntradas {
+        grid-area: CantidadEntradas;
+        font-family: 'Nunito', sans-serif;
+    }
+
+    .ValorTotal {
+        grid-area: ValorTotal;
+        font-family: 'Nunito', sans-serif;
+    }
+
+    .MedioPago {
+        grid-area: MedioPago;
+        font-family: 'Nunito', sans-serif;
+    }
+
+    .Datos {
+        text-align: left; /* Agregao manual */
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 0.2fr 0.1fr 1fr 1fr;
+        gap: 0px 30px;
+        grid-auto-flow: row;
+        grid-template-areas:
+            "Nombre Nombre"
+            "Portada Funcion"
+            "Portada ."
+            "Portada SELECCIONAR-PAGO"
+            "Portada Tarjeta"
+            "Portada MercadoPago"
+            "Portada ."
+            "Portada InputCantidadEntradas"
+            "Portada Input"
+            "Portada Reservar"
+            ". .";
+        grid-area: Datos;
+    }
+
+    .Nombre {
+        grid-area: Nombre;
+        font-family: 'Nunito', sans-serif;
+    }
+
+    .Portada {
+        grid-area: Portada;
+    }
+
+    .Funcion {
+        grid-area: Funcion;
+        font-family: 'Nunito', sans-serif;
+    }
+
+    .SELECCIONAR-PAGO {
+        grid-area: SELECCIONAR-PAGO;
+        font-family: 'Nunito', sans-serif;
+    }
+
+    .Tarjeta {
+        grid-area: Tarjeta;
+        font-family: 'Nunito', sans-serif;
+    }
+
+    .MercadoPago {
+        grid-area: MercadoPago;
+        font-family: 'Nunito', sans-serif;
+    }
+
+    .InputCantidadEntradas {
+        grid-area: InputCantidadEntradas;
+        font-family: 'Nunito', sans-serif;
+    }
+
+    .Input {
+        grid-area: Input;
+    }
+
+    .Reservar {
+        grid-area: Reservar;
+        font-family: 'Orbitron', sans-serif;
+        font-weight: 600;
+    }
+
+</style>
+<section class="src-components-reserva">
+    <div class="container2">
+        @if (ViewBag.EnableTicket)
+        {
+            <div class="Ticket">
+                <div class="TICKET">TICKET</div>
+                <div class="Numero">
+                    NÚMERO: {{ reserva.nroReserva}}
+                </div>
+                <div class="Pelicula">
+                    {{ pelicula.nombre }}
+                </div>
+                <div class="Dia">
+                    DIA: {{getDia(funcion.diaHorario)}}
+                </div>
+                <div class="Hora">
+                    HORA: {{getHora(funcion.diaHorario)}}
+                </div>
+                <div class="Sala">
+                    SALA: {{ sala.descripcion }}
+                </div>
+                <div class="CantidadEntradas">
+                    CANTIDAD DE ENTRADAS: {{ reserva.cantidadEntradas}}
+                </div>
+                <div class="ValorTotal">
+                    VALOR TOTAL: ${{ reserva.valorTotal}}
+                </div>
+                <div class="MedioPago">
+                    MEDIO DE PAGO: {{ reserva.medioPago}}
+                </div>
+            </div>   
+        }
+        <div class="Datos">
+            <div class="Nombre"
+                 @{var peli = ViewBag.PeliculaSelect;}
+                <h1>@peli.nombre</h1>
+            </div>
+            <div class="Portada">
+                <img alt="Poster" src="@peli.imagen" style="width: 300px; height: 400px; margin: 0;">
+            </div>
+            <div>
+
+                <div>
+                    <label for="medioPago">
+                        <div class="SELECCIONAR-PAGO">
+                            SELECCIONAR MEDIO DE PAGO
+                        </div>
+                    </label>
+                    <div>
+                        <label for="efectivo">Efectivo</label>
+                        <input type="radio" id="efectivo" name="medioPago" value="Efectivo" checked v-model="formData.medioPago">
+                    </div>
+                    <div>
+                        <label for="debito">Débito</label>
+                        <input type="radio" id="debito" name="medioPago" value="debito" checked v-model="formData.medioPago">
+                    </div>
+                    <div class="Tarjeta">
+                        <label for="tarjeta">Tarjeta</label>
+                        <input type="radio" id="tarjeta" name="medioPago" value="tarjeta" checked v-model="formData.medioPago">
+                    </div>
+                    <div class="MercadoPago">
+                        <label for="mercadoPago">MercadoPago</label>
+                        <input type="radio" id="mercadoPago" name="medioPago" value="MercadoPago" v-model="formData.medioPago">
+                    </div>
+                </div>
+
+                <div>
+                    <label for="cantidadEntradas">
+                        <div class="InputCantidadEntradas">CANTIDAD DE ENTRADAS (Valor $630 c/u)</div>
+                    </label>
+                    <div class="Input">
+                        <input type="number"
+                               id="cantidadEntradas"
+                               name="cantidadEntradas"
+                               class="form-control"
+                               autocomplete="off"
+                               required>
+                    </div>
+                </div>
+                <br>
+                <div class="Reservar">
+                    <form method="post">
+                        <button type="button"
+                                class="btn btn-primary"
+                                onclick="GetTicket()"
+                                asp-page-handler="GetTicket()"
+                                type="submit">
+                            Reservar
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+

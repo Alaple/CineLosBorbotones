@@ -17,6 +17,10 @@ namespace Cine.Models
 
         public Boolean esTarjeta { get; set; }
 
+        public int cineID { get; set; }
+
+        public int usuarioID { get; set; }
+
         public double calcularValorEntrada(int cantEntradas, double precioEntrada)
         {
             double retorno = 0;

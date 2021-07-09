@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using Newtonsoft.Json;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
@@ -41,6 +42,8 @@ namespace Cine.Controllers
             //Valido que no exista el usuario, y en caso de existir, valido el tipo de usuario
             if (user != null)
             {
+                TempData["Usuario"] = JsonConvert.SerializeObject(user);
+                TempData.Keep();
                 if (user.esAdmin) //ADMIN
                 {
                     return RedirectToAction("Home", "Home");

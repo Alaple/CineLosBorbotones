@@ -14,7 +14,7 @@ namespace Cine.Controllers
     {
         private readonly CineContext _context;
         public Pelicula peliSelect;
-
+        
         public HomeController(CineContext context)
         {
             _context = context;
@@ -98,6 +98,15 @@ namespace Cine.Controllers
                              select u).ToList();
             ViewBag.Peliculas = peliculas;
             return View(await _context.Peliculas.ToListAsync());
+        }
+
+        public async Task<IActionResult> GoReservas(int id)
+        {
+            TempData["PeliculaSelect"] = JsonConvert.SerializeObject((from u in _context.Peliculas
+                                                                      where u.peliculaID == id
+                                                                      select u).FirstOrDefault());
+            TempData.Keep();
+            return RedirectToAction("Reserva", "Funciones");
         }
 
         public async Task<IActionResult> ImageChangePage(int id) {

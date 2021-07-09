@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using Newtonsoft.Json;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
@@ -12,6 +13,8 @@ namespace Cine.Controllers
     public class FuncionesController : Controller
     {
         private readonly CineContext _context;
+        private readonly int ENTRADA=630;
+        private readonly bool buyTicket = false;
 
         public FuncionesController(CineContext context)
         {
@@ -21,8 +24,18 @@ namespace Cine.Controllers
         // GET: Funciones
         public async Task<IActionResult> Index()
         {
+            
             return View(await _context.Funciones.ToListAsync());
         }
+
+        public IActionResult Reserva()
+        {
+            //ViewBag.PeliculaSelect = _context.Peliculas.
+            ViewBag.PeliculaSelect = JsonConvert.DeserializeObject((string)TempData["PeliculaSelect"]);
+            ViewBag.EnableTicket = buyTicket;
+            return View();
+        }
+
 
         // GET: Funciones/Details/5
         public async Task<IActionResult> Details(int? id)
@@ -147,6 +160,27 @@ namespace Cine.Controllers
         private bool FuncionExists(int id)
         {
             return _context.Funciones.Any(e => e.funcionID == id);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> GetTicket(int cantEntradas, bool esTarjeta) //Retorna peliculas
+        {
+            ViewBag.EnableTicket = true;
+            //Usuario user = (Usuario)JsonConvert.DeserializeObject((string)TempData["Usuario"]);
+
+            //Ticket nuevoTicket = new Ticket();
+            //nuevoTicket.nroTicket = new Random((int)DateTime.Now.Ticks).Next(0x1000000);
+            //nuevoTicket.numero = new Random((int)DateTime.Now.Ticks).Next(0x1000000);
+            //nuevoTicket.cantEntradas = cantEntradas;
+            //nuevoTicket.precioEntrada = ENTRADA * cantEntradas;
+            //nuevoTicket.esTarjeta = esTarjeta;
+            //nuevoTicket.cineID = 0;
+            //nuevoTicket.usuarioID = user.usuarioID;
+
+            //_context.Add(nuevoTicket);
+            //await _context.SaveChangesAsync();
+            //return RedirectToAction("Start", "Funciones");
+            return View();
         }
     }
 }
