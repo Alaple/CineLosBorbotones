@@ -146,22 +146,26 @@
                             <div class="card-body">
                                 <h2>Mis Reservas</h2>
                                 <br />
-
                                 <table class="table">
                                     <tr>
                                         <th scope="col">RESERVA NRO</th>
-                                        <th scope="col">FUNCION NRO</th>
                                         <th scope="col">CANTIDAD DE ENTRADAS</th>
                                         <th scope="col">MEDIO DE PAGO</th>
                                         <th scope="col">COSTO TOTAL</th>
                                     </tr>
+                                        @{var miLista = ViewBag.Tickets as IEnumerable<Ticket>;}
+                                        @if (miLista != null)
+                                        {
+                                            foreach (var ticket in miLista)
+                                            {
                                     <tr v-for="reserva in reservas" :key="reserva._id">
-                                        <td>N RESERVA</td>
-                                        <td>ID FUNCION</td>
-                                        <td>CANT ENTRADAS</td>
-                                        <td>MEDIO DE PAGO</td>
-                                        <td>TOTAL PAGADO</td>
+                                                <td>@ticket.numero</td>
+                                                <td>@ticket.cantEntradas</td>
+                                                <td>@ticket.esTarjeta</td>
+                                                <td>@ticket.precioEntrada</td>
                                     </tr>
+                                            }
+                                        }
                                 </table>
                             </div>
                         </div>

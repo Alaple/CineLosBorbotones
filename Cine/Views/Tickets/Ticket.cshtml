@@ -1,6 +1,6 @@
-﻿@model Ticket
+﻿
 @{
-    ViewData["Title"] = "Reserva";
+    ViewData["Title"] = "Ticket";
 }
 <style>
     .src-components-reserva {
@@ -153,72 +153,34 @@
         font-family: 'Orbitron', sans-serif;
         font-weight: 600;
     }
-
 </style>
 <section class="src-components-reserva">
     <div class="container2">
-            <div class="Ticket" style="@ViewBag.EnableTicket">
-                <div class="TICKET">TICKET</div>
-                <div class="Numero">
-                    NÚMERO: 
-                </div>
-                <div class="Pelicula">
-                    
-                </div>
-                <div class="Dia">
-                    DIA: 
-                </div>
-                <div class="Hora">
-                    HORA: 
-                </div>
-                <div class="Sala">
-                    SALA: 
-                </div>
-                <div class="CantidadEntradas">
-                    CANTIDAD DE ENTRADAS: 
-                </div>
-                <div class="ValorTotal">
-                    VALOR TOTAL: $
-                </div>
-                <div class="MedioPago">
-                    MEDIO DE PAGO: 
-                </div>
-            </div>   
-        <div class="Datos">
-            <div class="Nombre">
-                 @{var peli = ViewBag.PeliculaSelect;}
-                <h1>@peli.nombre</h1>
+        <div class="Ticket">
+            <div class="TICKET">TICKET</div>
+            <div class="Numero">
+                NÚMERO:
             </div>
-            <div class="Portada">
-                <img alt="Poster" src="@peli.imagen" style="width: 300px; height: 400px; margin: 0;">
-            </div>
-            <div>
-                    <div>
-                        <label for="medioPago">
-                            <div class="SELECCIONAR-PAGO">
-                                SELECCIONAR MEDIO DE PAGO
-                            </div>
-                        </label>
-                        <div class="Tarjeta">
-                            <label for="tarjeta">Tarjeta</label>
-                            @Html.TextBoxFor(u => u.esTarjeta, new { @class = "", type = "radio", required = "required" })
-                        </div>
-                    </div>
+            <div class="Pelicula">
 
-                    <div>
-                        <label for="cantidadEntradas">
-                            <div class="InputCantidadEntradas">CANTIDAD DE ENTRADAS (Valor $630 c/u)</div>
-                        </label>
-                        <div class="Input">
-                            @Html.TextBoxFor(u => u.cantEntradas, new { @class = "form-control", type = "number", required = "required" })
-                        </div>
-                    </div>
-                    <br>
-                    <div class="Reservar">
-                        <a asp-area="" asp-controller="Funciones" asp-action="ObtenerTicket">
-                            <input type="submit" class="btn btn-dark" value="RESERVA">
-                        </a>
-                    </div>
+            </div>
+            <div class="Dia">
+                DIA:
+            </div>
+            <div class="Hora">
+                HORA:
+            </div>
+            <div class="Sala">
+                SALA:
+            </div>
+            <div class="CantidadEntradas">
+                CANTIDAD DE ENTRADAS:
+            </div>
+            <div class="ValorTotal">
+                VALOR TOTAL: $
+            </div>
+            <div class="MedioPago">
+                MEDIO DE PAGO:
             </div>
         </div>
     </div>

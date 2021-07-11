@@ -30,7 +30,6 @@ namespace Cine.Controllers
 
         public IActionResult Reserva()
         {
-            //ViewBag.PeliculaSelect = _context.Peliculas.
             ViewBag.EnableTicket = "display: none;";
             ViewBag.PeliculaSelect = JsonConvert.DeserializeObject((string)TempData["PeliculaSelect"]);
             return View();
@@ -162,26 +161,13 @@ namespace Cine.Controllers
             return _context.Funciones.Any(e => e.funcionID == id);
         }
 
-        [HttpPost]
-        public async Task<IActionResult> GetTicket(int cantEntradas, bool esTarjeta) //Retorna peliculas
+        public async Task<IActionResult> ObtenerTicket(int id)
         {
-            ViewBag.EnableTicket = "display: inline;";
-
-            //Usuario user = (Usuario)JsonConvert.DeserializeObject((string)TempData["Usuario"]);
-
-            //Ticket nuevoTicket = new Ticket();
-            //nuevoTicket.nroTicket = new Random((int)DateTime.Now.Ticks).Next(0x1000000);
-            //nuevoTicket.numero = new Random((int)DateTime.Now.Ticks).Next(0x1000000);
-            //nuevoTicket.cantEntradas = cantEntradas;
-            //nuevoTicket.precioEntrada = ENTRADA * cantEntradas;
-            //nuevoTicket.esTarjeta = esTarjeta;
-            //nuevoTicket.cineID = 0;
-            //nuevoTicket.usuarioID = user.usuarioID;
-
-            //_context.Add(nuevoTicket);
-            //await _context.SaveChangesAsync();
-            //return RedirectToAction("Start", "Funciones");
-            return View();
+            TempData["PeliculaSelect"] = JsonConvert.SerializeObject((from u in _context.Peliculas
+                                                                      where u.peliculaID == id
+                                                                      select u).FirstOrDefault());
+            TempData.Keep();
+            return RedirectToAction("MiPerfil", "Home");
         }
     }
 }

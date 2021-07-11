@@ -60,10 +60,35 @@ namespace Cine.Controllers
             return View();
         }
 
-        public IActionResult MiPerfil()
+        public async Task<IActionResult> MiPerfil()
         {
             ViewData["Message"] = "Your contact page.";
+            if (TempData["Usuario"] == null) {
+                return RedirectToAction("Index", "Home");
+            }
             ViewBag.Usuario = JsonConvert.DeserializeObject((string)TempData["Usuario"]);
+
+            if (TempData["PeliculaSelect"] != null) { 
+                ViewBag.PeliculaSelect = JsonConvert.DeserializeObject((string)TempData["PeliculaSelect"]);
+                Ticket ticket = new Ticket();
+                ticket.nroTicket = new Random().Next(0, 10000000);
+                ticket.numero = new Random().Next(0, 10000000);
+
+                ticket.cantEntradas = new Random().Next(1,10);
+                ticket.precioEntrada = 630 * ticket.cantEntradas;
+                ticket.esTarjeta = false;
+                ticket.cineID = 2;
+                ticket.usuarioID = ViewBag.Usuario.usuarioID;
+
+                _context.Add(ticket);
+                await _context.SaveChangesAsync();
+            }
+
+            int id = ViewBag.Usuario.usuarioID;
+            ViewBag.Tickets = (from u in _context.Tickets
+                                 where u.usuarioID == id
+                               select u).ToList();
+
             return View();
         }
 
