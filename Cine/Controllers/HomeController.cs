@@ -44,6 +44,12 @@ namespace Cine.Controllers
             return View();
         }
 
+        public IActionResult Register()
+        {
+            return View();
+        }
+
+
         public IActionResult About()
         {
             ViewData["Message"] = "Your application description page.";
@@ -164,6 +170,23 @@ namespace Cine.Controllers
             }
 
             return RedirectToAction("Home", "Home");
+        }
+
+        public async Task<IActionResult> RegistrarUsuario(string nombre,string apellido,string email,string clave1, string direccion, string telefono, string dni)
+        {
+            Usuario usuario = new Usuario();
+            usuario.nombre = nombre;
+            usuario.apellido = apellido;
+            usuario.mail = email;
+            usuario.clave = clave1;
+            usuario.direccion = direccion;
+            usuario.telefono = telefono;
+            usuario.dni = dni;
+
+            _context.Add(usuario);
+            await _context.SaveChangesAsync();
+
+            return RedirectToAction("Index", "Home");
         }
     }
 }

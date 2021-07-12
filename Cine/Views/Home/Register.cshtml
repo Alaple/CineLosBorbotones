@@ -1,0 +1,188 @@
+﻿
+@{
+    ViewData["Title"] = "Register";
+}
+<style>
+    .grid-container {
+        display: grid;
+        grid-template-columns: 0.2fr 2fr 0.2fr 2fr 0.2fr 1fr 0.2fr;
+        grid-template-rows: 5fr 0.1fr 0.1fr 0.1fr 0.3fr 0.1fr 0.2fr 0.2fr 0.2fr 0.1fr 0.2fr 0.2fr 0.2fr 0.2fr 0.2fr 0.2fr 0.5fr 0.3fr 0.1fr 5fr;
+        gap: 0px 0px;
+        grid-template-areas:
+            ". . . . . . ."
+            ". . . . . ImagenPromocional ."
+            ". TituloNombre . TittuloApellido . ImagenPromocional ."
+            ". . . . . ImagenPromocional ."
+            ". TextoNombre . TextoApelldio . ImagenPromocional ."
+            ". . . . . ImagenPromocional ."
+            ". TituloMail . . . ImagenPromocional ."
+            ". TextoMail TextoMail TextoMail . ImagenPromocional ."
+            ". . . . . ImagenPromocional ."
+            ". TituloClave . TitucloConfirmar . ImagenPromocional ."
+            ". . . . . ImagenPromocional ."
+            ". TextoClave . TextoConfirmar . ImagenPromocional ."
+            ". . . . . ImagenPromocional ."
+            ". TituloFecha . TituloGenero . ImagenPromocional ."
+            ". . . . . ImagenPromocional ."
+            ". TextoFehca . TextoGenero . ImagenPromocional ."
+            ". . . . . ImagenPromocional ."
+            ". BotonRegistro . . . ImagenPromocional ."
+            ". . . . . ImagenPromocional ."
+            ". . . . . . .";
+    }
+
+    .adjustPosition {
+        margin-top: auto;
+        text-align: left;
+    }
+
+    .adjustInput {
+        text-align: left;
+    }
+
+    .adjutsInputWidth {
+        width: -webkit-fill-available;
+    }
+
+    .TituloNombre {
+        grid-area: TituloNombre;
+        font-family: 'Convergence', sans-serif;
+    }
+
+    .TittuloApellido {
+        grid-area: TittuloApellido;
+        font-family: 'Convergence', sans-serif;
+    }
+
+    .TextoNombre {
+        grid-area: TextoNombre;
+    }
+
+    .TextoApelldio {
+        grid-area: TextoApelldio;
+    }
+
+    .TituloMail {
+        grid-area: TituloMail;
+        font-family: 'Convergence', sans-serif;
+    }
+
+    .TextoMail {
+        grid-area: TextoMail;
+    }
+
+    .TituloClave {
+        grid-area: TituloClave;
+        font-family: 'Convergence', sans-serif;
+    }
+
+    .TitucloConfirmar {
+        grid-area: TitucloConfirmar;
+        font-family: 'Convergence', sans-serif;
+    }
+
+    .TextoClave {
+        grid-area: TextoClave;
+    }
+
+    .TextoConfirmar {
+        grid-area: TextoConfirmar;
+    }
+
+    .TituloFecha {
+        grid-area: TituloFecha;
+        font-family: 'Convergence', sans-serif;
+    }
+
+    .TituloGenero {
+        grid-area: TituloGenero;
+    }
+
+    .TextoFehca {
+        grid-area: TextoFehca;
+    }
+
+    .TextoGenero {
+        grid-area: TextoGenero;
+    }
+
+    .BotonRegistro {
+        grid-area: BotonRegistro;
+        font-family: 'Orbitron', sans-serif;
+        font-weight: 600;
+        text-align: end;
+    }
+
+    .ImagenPromocional {
+        grid-area: ImagenPromocional;
+    }
+
+    i {
+        cursor: pointer;
+        display: block;
+        float: right;
+        margin-block: -30px;
+    }
+
+    span {
+        display: block;
+        margin-top: 50px;
+    }
+</style>
+    <form asp-controller="Home" asp-action="RegistrarUsuario" asp-route-nombre="nombre" asp-route-apellido="apellido"
+        asp-route-email="email" asp-route-clave1="clave1" asp-route-direccion="direccion" asp-route-telefono="telefono">
+<div class="grid-container">
+        <div class="TituloNombre adjustPosition">NOMBRE</div>
+        <div class="TittuloApellido adjustPosition">APELLIDO</div>
+        <div class="TextoNombre adjustInput">
+            <input type="text"
+                   id="nombre"
+                   name="nombre"
+                   class="form-control"
+                   autocomplete="off"
+                   required
+                   no-espacios>
+        </div>
+        <div class="TextoApelldio adjustInput">
+            <input type="text"
+                   id="apellido"
+                   name="apellido"
+                   class="form-control"
+                   autocomplete="off"
+                   required
+                   no-espacios>
+        </div>
+        <div class="TituloMail adjustPosition">EMAIL</div>
+        <div class="TextoMail adjustInput">
+            <input type="email"
+                   id="email"
+                   name="email"
+                   class="form-control"
+                   autocomplete="off"
+                   required>
+        </div>
+        <div class="TituloClave adjustPosition">CONTRASEÑA</div>
+        <div class="TitucloConfirmar adjustPosition">DIRECCION</div>
+        <div class="TextoClave adjustInput">
+            <input class="form-control adjutsInputWidth" type="password" name="clave1" id="clave1">
+        </div>
+        <div class="TextoConfirmar adjustInput">
+            <input class="form-control adjutsInputWidth" type="text" name="direccion" id="direccion">
+        </div>
+        <div class="TituloFecha adjustPosition">DNI</div>
+        <div class="TituloTelefono adjustPosition" style="grid-column: 4; grid-row: 14;">TELEFONO</div>
+        <div class="TextoFehca mb-2 adjustInput">
+            <input class="form-control adjutsInputWidth" type="number" name="dni" id="dni">
+        </div>
+        <div class="TextoTelefono mb-2 adjustInput" style="grid-column: 4; grid-row: 16;">
+            <input class="form-control adjutsInputWidth" type="text" name="telefono" id="telefono">
+        </div>
+        <div class="BotonRegistro adjustInput" style="text-align: -webkit-left;">
+            <input type="submit" class="btn btn-dark" value="REGISTRARSE">
+        </div>
+        <div class="ImagenPromocional">
+            <img src="https://www.promociones.com.ar/wp-content/uploads/2019/02/cine-350x230.png" alt="">
+        </div>
+</div>
+    </form>
+
