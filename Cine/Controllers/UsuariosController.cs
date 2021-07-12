@@ -46,7 +46,7 @@ namespace Cine.Controllers
                 TempData.Keep();
                 if (user.esAdmin) //ADMIN
                 {
-                    return RedirectToAction("Home", "Home");
+                    return RedirectToAction("HomeAdmin", "Home");
                 }
                 else 
                 {
