@@ -150,8 +150,9 @@
                                     <tr>
                                         <th scope="col">RESERVA NRO</th>
                                         <th scope="col">CANTIDAD DE ENTRADAS</th>
-                                        <th scope="col">MEDIO DE PAGO</th>
+                                        @*<th scope="col">MEDIO DE PAGO</th>*@
                                         <th scope="col">COSTO TOTAL</th>
+                                        <th scope="col"></th>
                                     </tr>
                                         @{var miLista = ViewBag.Tickets as IEnumerable<Ticket>;}
                                         @if (miLista != null)
@@ -161,8 +162,13 @@
                                     <tr v-for="reserva in reservas" :key="reserva._id">
                                                 <td>@ticket.numero</td>
                                                 <td>@ticket.cantEntradas</td>
-                                                <td>@ticket.esTarjeta</td>
+                                                @*<td>@ticket.esTarjeta</td>*@
                                                 <td>@ticket.precioEntrada</td>
+                                                <td>
+                                                    <form  asp-action="DeleteTicket" asp-route-nroTicket="@ticket.nroTicket">
+                                                        <input type="submit" value="Delete" class="btn btn-default" />
+                                                    </form>
+                                                </td>
                                     </tr>
                                             }
                                         }

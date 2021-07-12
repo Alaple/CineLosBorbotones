@@ -74,9 +74,15 @@ namespace Cine.Controllers
                 ticket.nroTicket = new Random().Next(0, 10000000);
                 ticket.numero = new Random().Next(0, 10000000);
 
-                ticket.cantEntradas = new Random().Next(1,10);
+                ticket.cantEntradas = (int)TempData["cantEntradas"];
                 ticket.precioEntrada = 630 * ticket.cantEntradas;
-                ticket.esTarjeta = false;
+
+                if ((int)TempData["esTarjeta"] == 0) {
+                    ticket.esTarjeta = false;
+                } else {
+                    ticket.esTarjeta = true;
+                }
+
                 ticket.cineID = 2;
                 ticket.usuarioID = ViewBag.Usuario.usuarioID;
 
@@ -140,6 +146,19 @@ namespace Cine.Controllers
                                             select u).FirstOrDefault());
             TempData.Keep();
             return RedirectToAction("PeliculaSeleccionada", "Home");
+        }
+
+        public async Task<IActionResult> DeleteTicket(int nroTicket)
+        {
+            var ticket = await _context.Tickets
+                .FirstOrDefaultAsync(m => m.nroTicket == nroTicket);
+
+            if (ticket != null) { 
+                _context.Tickets.Remove(ticket);
+                await _context.SaveChangesAsync();
+            }
+
+            return RedirectToAction("Home", "Home");
         }
     }
 }

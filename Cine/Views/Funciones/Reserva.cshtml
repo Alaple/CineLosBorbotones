@@ -193,16 +193,18 @@
                 <img alt="Poster" src="@peli.imagen" style="width: 300px; height: 400px; margin: 0;">
             </div>
             <div>
+                <form asp-area="" asp-controller="Funciones" asp-action="ObtenerTicket" asp-route-cantEntradas="cantEntradas"
+                      asp-route-esTarjeta="esTarjeta">
                     <div>
-                        <label for="medioPago">
+                        @*<label for="medioPago">
                             <div class="SELECCIONAR-PAGO">
                                 SELECCIONAR MEDIO DE PAGO
                             </div>
                         </label>
-                        <div class="Tarjeta">
+                        <div class="Tarjeta">re
                             <label for="tarjeta">Tarjeta</label>
-                            @Html.TextBoxFor(u => u.esTarjeta, new { @class = "", type = "radio", required = "required" })
-                        </div>
+                            @Html.RadioButtonFor(u => u.esTarjeta, new { @class = "", type = "radio", name= "esTarjeta", check="1"})
+                        </div>*@
                     </div>
 
                     <div>
@@ -215,10 +217,9 @@
                     </div>
                     <br>
                     <div class="Reservar">
-                        <a asp-area="" asp-controller="Funciones" asp-action="ObtenerTicket">
-                            <input type="submit" class="btn btn-dark" value="RESERVA">
-                        </a>
+                        <input type="submit" class="btn btn-dark" value="RESERVA">
                     </div>
+                </form>
             </div>
         </div>
     </div>

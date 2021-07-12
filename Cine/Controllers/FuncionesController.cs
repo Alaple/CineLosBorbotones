@@ -161,11 +161,13 @@ namespace Cine.Controllers
             return _context.Funciones.Any(e => e.funcionID == id);
         }
 
-        public async Task<IActionResult> ObtenerTicket(int id)
+        public async Task<IActionResult> ObtenerTicket(int id, int esTarjeta, int cantEntradas)
         {
             TempData["PeliculaSelect"] = JsonConvert.SerializeObject((from u in _context.Peliculas
                                                                       where u.peliculaID == id
                                                                       select u).FirstOrDefault());
+            TempData["cantEntradas"] = cantEntradas;
+            TempData["esTarjeta"] = esTarjeta;
             TempData.Keep();
             return RedirectToAction("MiPerfil", "Home");
         }
